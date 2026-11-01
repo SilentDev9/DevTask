@@ -1,0 +1,187 @@
+.page {
+  min-height: 100vh;
+  padding: 35px 5% 110px;
+  background: #0b0e1b;
+  color: #f5f4fb;
+}
+.container {
+  max-width: 1150px;
+  margin: auto;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.head h1 {
+  font-size: 30px;
+  margin: 7px 0;
+}
+.head p {
+  color: #969bb4;
+}
+.head a,
+.insight a {
+  color: #b6a0ff;
+  text-decoration: none;
+  font-size: 13px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #a78bfa;
+  font-weight: 800;
+}
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 18px;
+}
+.completion,
+.metrics article,
+.details > div {
+  padding: 24px;
+  border: 1px solid #292e46;
+  border-radius: 18px;
+  background: #151a30;
+}
+.progressVisited {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 22px;
+}
+.progressCircle {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(#9b78ff var(--progress), #292d45 0);
+}
+.progressInner {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #151a30;
+}
+.progressInner strong {
+  font-size: 28px;
+}
+.progressVisited h2 {
+  font-size: 25px;
+}
+.progressVisited p,
+.progressVisited span {
+  color: #9da3bb;
+  margin-top: 6px;
+  font-size: 13px;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.metrics article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.metrics article span {
+  color: #9da3bb;
+  font-size: 12px;
+}
+.metrics article strong {
+  font-size: 30px;
+}
+.metrics article i {
+  position: absolute;
+  right: 22px;
+  top: 23px;
+  color: #a78bfa;
+  font-size: 20px;
+}
+.details {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+.details h2 {
+  font-size: 17px;
+  margin-bottom: 22px;
+}
+.barRow {
+  display: grid;
+  grid-template-columns: 65px 1fr 25px;
+  gap: 12px;
+  align-items: center;
+  margin: 17px 0;
+  color: #b9bdd0;
+  font-size: 12px;
+}
+.barRow > div {
+  height: 8px;
+  border-radius: 20px;
+  background: #292e46;
+  overflow: hidden;
+}
+.barRow i {
+  display: block;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7251d6, #a78bfa);
+}
+.insight > i {
+  font-size: 25px;
+  color: #fbbf24;
+}
+.insight p {
+  color: #9da3bb;
+  line-height: 1.8;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.error {
+  color: #fb7185;
+}
+.loading {
+  padding: 50px;
+  text-align: center;
+  color: #aeb3c8;
+}
+@media (max-width: 800px) {
+  .summary,
+  .details {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 500px) {
+  .page {
+    padding: 25px 15px 110px;
+  }
+  .head {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+  .progressCircle {
+    width: 115px;
+    height: 115px;
+  }
+  .progressInner {
+    width: 90px;
+    height: 90px;
+  }
+  .metrics article {
+    padding: 17px;
+  }
+  .metrics article strong {
+    font-size: 25px;
+  }
+}

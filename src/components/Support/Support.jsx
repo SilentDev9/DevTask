@@ -1,0 +1,14 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import BottomNav from "../BottomNav/BottomNav";
+import styles from "../About/InfoPages.module.css";
+import { useLanguage, translate } from "../../context/LanguageContext";
+export default function Support() {
+  const { language } = useLanguage();
+  const t = (en, fa) => translate(language, en, fa);
+  const [topic, setTopic] = useState("Account");
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+  function submit(event) { event.preventDefault(); if (!message.trim()) return; setSent(true); }
+  return <main className={styles.page}><div className={styles.container}><header><Link to="/home" className={styles.brand}><i className="fa fa-layer-group" /> DevTask</Link><span>{t("HELP CENTER", "مرکز راهنما") }</span><h1>{t("How can we help?", "چطور می‌توانیم کمک کنیم؟") }</h1><p>{t("Find a quick answer below, or send a support note about your experience with DevTask.", "پاسخ پرسش خود را پیدا کنید یا درباره تجربه‌تان از DevTask پیام بفرستید.") }</p></header><section className={styles.cards}><article><i className="fa fa-tasks" /><h2>{t("Managing tasks", "مدیریت تسک‌ها") }</h2><p>{t("Create tasks, set a priority and deadline, then use the check box to update completion.", "تسک بسازید، اولویت و مهلت تعیین کنید و وضعیت تکمیل را تغییر دهید.") }</p></article><article><i className="fa fa-user-circle" /><h2>{t("Your account", "حساب شما") }</h2><p>{t("Open Profile to review the signed-in email and your personal task summary.", "برای دیدن ایمیل و خلاصه تسک‌ها وارد پروفایل شوید.") }</p></article><article><i className="fa fa-bar-chart" /><h2>{t("Statistics", "آمار") }</h2><p>{t("Your statistics are calculated from the tasks saved to your account.", "آمار شما بر اساس تسک‌های ذخیره‌شده محاسبه می‌شود.") }</p></article></section><form className={styles.supportForm} onSubmit={submit}><h2>{t("Contact support", "ارتباط با پشتیبانی") }</h2>{sent ? <p className={styles.success}>Your message has been prepared. This demo form does not send email yet.</p> : <><label>{t("Topic", "موضوع") }<select value={topic} onChange={(e)=>setTopic(e.target.value)}><option>Account</option><option>Tasks</option><option>Bug report</option><option>Other</option></select></label><label>{t("Message", "پیام") }<textarea rows="5" value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="Describe what you need help with..." required /></label><button className={styles.primary}>{t("Submit message", "ثبت پیام") }</button></>}</form><footer><Link to="/about">{t("About DevTask", "درباره DevTask") }</Link> · DevTask Support</footer></div><BottomNav /></main>;
+}

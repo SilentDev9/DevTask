@@ -1,0 +1,258 @@
+/* Login page: styles are scoped to this CSS Module */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(109, 40, 217, 0.13),
+      transparent 55%
+    ),
+    var(--bg-primary, #0b1020);
+  color: var(--text-primary, #f8fafc);
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 440px;
+  padding: clamp(22px, 5vw, 38px);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 22px;
+  background: rgba(5, 13, 31, 0.72);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+}
+
+.headerForm {
+  padding: 0;
+  margin-bottom: 28px;  flex-direction: column;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--primary-light, #8b5cf6);
+  font-size: 2.6rem;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.headerForm h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.65rem, 5vw, 2rem);
+  line-height: 1.2;
+  font-weight: 700;
+
+}
+
+.headerForm p {
+  margin: 0;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.inputWrap > i {
+  position: absolute;
+  left: 15px;
+  z-index: 1;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.inputWrap input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding: 14px 44px;
+  border: 1px solid rgba(139, 92, 246, 0.16);
+  border-radius: 10px;
+  outline: none;
+  background: #111d3a;
+  color: var(--text-primary, #f8fafc);
+  font: inherit;
+  font-size: 0.92rem;
+  text-align: left;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.inputWrap input::placeholder {
+  color: #8393b8;
+  opacity: 1;
+}
+
+.inputWrap input:focus {
+  border-color: var(--primary-light, #8b5cf6);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.passwordHint {
+  position: absolute;
+  right: 14px;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 1rem;
+}
+
+.submitButton {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 4px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: var(
+    --gradient-primary,
+    linear-gradient(100deg, #6d28d9, #8b5cf6, #a855f7)
+  );
+  color: white;
+  font: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    filter 160ms ease,
+    transform 160ms ease;
+}
+
+.submitButton:hover {
+  filter: brightness(1.08);
+}
+
+.submitButton:active {
+  transform: translateY(1px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 10px 0 2px;
+  color: var(--text-muted, #64748b);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border-color, #2d3748);
+}
+
+.socialButtons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.socialButtons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 48px;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 10px;
+  background: #111d3a;
+  color: var(--text-primary, #f8fafc);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.socialButtons button:hover {
+  border-color: var(--primary-light, #8b5cf6);
+  background: #172448;
+}
+
+.socialButtons button:first-child i {
+  color: #60a5fa;
+}
+
+.signupText {
+  margin: 30px 0 0;
+  color: var(--text-secondary, #94a3b8);
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.signupText a {
+  margin-left: 4px;
+  color: var(--primary-light, #8b5cf6);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signupText a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .page {
+    align-items: center;
+    padding: 16px;
+  }
+
+  .loginCard {
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .headerForm {
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    margin-bottom: 20px;
+    font-size: 2.35rem;
+  }
+
+  .signupText {
+    margin-top: 24px;
+  }
+}
+
+@media (max-height: 620px) and (min-width: 481px) {
+  .page {
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,261 @@
+.page {
+
+  padding: 24px 20px 40px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #050d1c;
+  color: #f4f6ff;
+
+}
+
+.container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;  box-sizing: border-box;
+}
+.containerHide {
+  opacity: 10%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 42px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.backButton {
+  display: grid;
+  place-items: center;
+  width: 38px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #e8edff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  min-width: 0;
+}
+
+.field label {
+  color: #f0f2fc;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.required {
+  color: #ff4c67;
+}
+
+.field input,
+.field textarea,
+.selectWrapper {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #202f55;
+  border-radius: 14px;
+  background: #111d3d;
+  color: #f4f6ff;
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.field input,
+.field textarea {
+  padding: 17px;
+}
+
+.field input {
+  min-height: 58px;
+}
+
+.field textarea {
+  min-height: 130px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #8998bf;
+}
+
+.field input:focus,
+.field textarea:focus,
+.selectWrapper:focus-within {
+  outline: none;
+  border-color: #7542ff;
+  box-shadow: 0 0 0 3px rgb(117 66 255 / 15%);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.selectWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+  padding: 0 13px;
+}
+
+.selectWrapper select {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #f4f6ff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.selectWrapper select option {
+  background: #111d3d;
+  color: #f4f6ff;
+}
+
+.priorityDot,
+.projectDot {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.priorityDotLow {
+  background: var(--success);
+  box-shadow: 0 0 0 3px rgba(16 185 129/12%);
+}
+.priorityDotMedium {
+  background: var(--warning);
+  box-shadow: 0 0 0 3px rgb(255 195 66 / 12%);
+}
+.priorityDotHigh {
+  background: var(--danger);
+  box-shadow: 0 0 0 3px rgba(239 68 68 / 12%);
+}
+.projectDot {
+  background: #9348ff;
+  box-shadow: 0 0 0 3px rgb(147 72 255 / 12%);
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 62px;
+
+  border: 1px solid #874bff;
+  border-radius: 14px;
+  background: linear-gradient(110deg, #7135f5, #8c32f5);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.submitButton i {
+  font-size: 19px;
+}
+
+.submitButton:hover {
+  filter: brightness(1.12);
+}
+
+.submitButton:active {
+  transform: scale(0.985);
+}
+
+ .languageRow { width:100%; max-width:560px; margin:0 auto 16px; display:flex; justify-content:flex-end; }
+.languageButton { display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:8px 14px; border:1px solid #343b60; border-radius:12px; background:#121d38; color:#e9e7ff; cursor:pointer; font:inherit; }
+.container { transition: opacity .2s ease, filter .2s ease; }
+.containerHide { opacity:.28; filter:blur(2px); pointer-events:none; }
+.dialogBackdrop { position:fixed; inset:0; z-index:2000; display:grid; place-items:center; padding:20px; box-sizing:border-box; background:rgba(3,7,18,.76); backdrop-filter:blur(9px); animation:backdropIn .18s ease both; }
+.accpetOrNotAccpet { width:min(100%,440px); box-sizing:border-box; padding:30px; display:flex; align-items:center; flex-direction:column; gap:12px; text-align:center; border:1px solid #45416e; border-radius:24px; background:linear-gradient(145deg,#1b2340,#11182d); box-shadow:0 24px 80px rgba(0,0,0,.48); animation:dialogIn .22s ease both; }
+.dialogIcon { width:54px; height:54px; display:grid; place-items:center; border-radius:17px; color:#c4b5fd; background:rgba(139,92,246,.16); font-size:23px; }
+.accpetOrNotAccpet h2 { margin:4px 0 0; color:#f5f4ff; font-size:21px; }
+.accpetOrNotAccpet p { margin:0; color:#aeb8d0; line-height:1.8; font-size:14px; }
+.buttonAccpet { width:100%; display:flex; flex-wrap:wrap; gap:10px; padding-top:12px; }
+.buttonAccpet button { flex:1 1 140px; min-height:46px; padding:10px 14px; border:1px solid transparent; border-radius:12px; color:white; font:inherit; font-weight:700; cursor:pointer; transition:filter .2s ease,transform .2s ease; }
+.buttonAccpet button:hover:not(:disabled) { filter:brightness(1.12); }
+.buttonAccpet button:active:not(:disabled) { transform:scale(.98); }
+.buttonAccpet button:disabled { opacity:.6; cursor:not-allowed; }
+.cancelButton { background:#303951; border-color:#46516d !important; }
+.confirmButton { background:linear-gradient(110deg,#7135f5,#8c32f5); }
+@keyframes dialogIn { from { opacity:0; transform:translateY(12px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes backdropIn { from { opacity:0; } to { opacity:1; } }
+@media(max-width:480px) { .page { padding:18px 14px 36px; } .accpetOrNotAccpet { padding:24px 18px; } .accpetOrNotAccpet h2 { font-size:19px; } .buttonAccpet { flex-direction:column-reverse; } .buttonAccpet button { flex-basis:auto; width:100%; } }
+.priorityDot {
+  width: 10px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.priorityDotLow {
+  background-color: #10b981;
+}
+
+.priorityDotMedium {
+  background-color: #f59e0b;
+}
+
+.priorityDotHigh {
+  background-color: #ef4444;
+}
+@media (max-width: 380px) {
+  .page {
+    padding: 20px 16px 32px;
+  }
+
+  .header {
+    gap: 14px;
+    margin-bottom: 34px;
+  }
+
+  .header h1 {
+    font-size: 21px;
+  }
+
+  .options {
+    gap: 12px;
+  }
+
+  .selectWrapper {
+    gap: 7px;
+    padding: 0 9px;
+  }
+
+  .selectWrapper select {
+    font-size: 14px;
+  }
+}

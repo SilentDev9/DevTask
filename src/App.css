@@ -1,0 +1,59 @@
+:root {
+  /* Backgrounds */
+  --bg-primary: #0b1020;
+  --bg-surface: #111827;
+  --bg-surface-alt: #1f2937;
+  --border-color: #2d3748;
+
+  /* Brand */
+  --primary: #6d28d9;
+  --primary-light: #8b5cf6;
+  --secondary: #a855f7;
+  --accent: #22d3ee;
+
+  /* Status */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(100deg, #6d28d9, #8b5cf6, #a855f7);
+  --gradient-accent: linear-gradient(100deg, #22d3ee, #06b6d4);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app-persian { font-family: Tahoma, Arial, sans-serif; }
+.app-persian input, .app-persian textarea, .app-persian select { text-align: right; }
