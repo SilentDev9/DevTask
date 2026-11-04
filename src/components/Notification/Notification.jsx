@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import styles from "./Notification.module.css";
+import { useLanguage } from "../../context/LanguageContext";
 
 function Notification({ message, type = "info", onClose, duration = 4000 }) {
+  const { language } = useLanguage();
   useEffect(() => {
     if (!duration || !onClose) return;
 
@@ -25,6 +27,7 @@ function Notification({ message, type = "info", onClose, duration = 4000 }) {
   return (
     <div
       className={`${styles.NotificationDiv} ${styles[safeType]}`}
+      dir={language === "fa" ? "rtl" : "ltr"}
       role={
         safeType === "danger" || safeType === "warning" ? "alert" : "status"
       }
@@ -42,7 +45,7 @@ function Notification({ message, type = "info", onClose, duration = 4000 }) {
         className={styles.closeButton}
         type="button"
         onClick={onClose}
-        aria-label="بستن اعلان"
+        aria-label={language === "fa" ? "بستن اعلان" : "Close notification"}
       >
         ×
       </button>

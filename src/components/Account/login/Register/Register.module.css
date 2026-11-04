@@ -111,3 +111,23 @@
     font-size: 23px;
   }
 }
+
+
+.container {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: radial-gradient(ellipse at 15% 12%, #6d28d933, transparent 38%), radial-gradient(ellipse at 90% 85%, #a855f722, transparent 34%), #0b1020;
+}
+.container::before,.container::after { content:""; position:absolute; z-index:-1; width:260px;height:260px;border:1px solid #8b5cf622;border-radius:50%; }
+.container::before { top:-150px;right:-80px; }.container::after { bottom:-170px;left:-80px; }
+.registerCard { position:relative; max-width:480px; padding:clamp(26px,5vw,44px); border:1px solid #8b5cf644; border-radius:26px; background:linear-gradient(145deg,#151d35ed,#0e172bed); backdrop-filter:blur(18px); box-shadow:0 28px 90px #0008, inset 0 1px #ffffff0d; }
+.brandMark { width:62px;height:62px;display:grid;place-items:center;margin:0 auto 16px;border-radius:19px;background:linear-gradient(145deg,#8b5cf6,#5b21b6);color:white;font-size:27px;box-shadow:0 12px 30px #6d28d955; }
+.eyebrow { text-align:center;color:#a78bfa;font-size:10px;letter-spacing:3px;font-weight:800;margin-bottom:10px; }
+.registerCard h1 { font-size:clamp(23px,4vw,29px); }
+.subtitle { max-width:340px;margin:0 auto 28px; }
+.inputGroup { position:relative; }
+.inputGroup input { min-height:50px;padding-inline:15px 46px; }
+.passwordToggle { position:absolute;inset-inline-end:12px;bottom:10px;width:32px;height:32px;border:0;border-radius:9px;background:transparent;color:#9ca3af;cursor:pointer; }
+.passwordToggle:hover { color:#c4b5fd;background:#8b5cf61c; }
+.registerButton { min-height:52px;background:linear-gradient(100deg,#6d28d9,#8b5cf6,#a855f7);box-shadow:0 10px 24px #6d28d944; }
+.registerButton:disabled { opacity:.65;cursor:wait; }
+@media(max-width:480px){.container{padding:18px 14px 30px}.registerCard{padding:28px 21px;border-radius:22px}}

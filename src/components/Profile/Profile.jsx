@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import BottomNav from "../BottomNav/BottomNav";
 import styles from "./Profile.module.css";
@@ -8,6 +8,8 @@ import { useLanguage, translate } from "../../context/LanguageContext";
 function Profile() {
   const { language } = useLanguage();
   const t = (en, fa) => translate(language, en, fa);
+  const formatNumber = (value) => new Intl.NumberFormat(language === "fa" ? "fa-IR" : "en-US").format(value);
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [taskCount, setTaskCount] = useState(0);
   const [completedCount, setCompletedCount] = useState(0);
@@ -36,12 +38,12 @@ function Profile() {
     user?.user_metadata?.full_name ||
     user?.user_metadata?.userName ||
     user?.email?.split("@")[0] ||
-    "DevTask User";
+    t("DevTask User", "کاربر DevTask");
   const initial = name.charAt(0).toUpperCase();
 
   async function signOut() {
     const { error } = await supabase.auth.signOut();
-    if (!error) window.location.assign("/login");
+    if (!error) navigate("/login", { replace: true });
   }
 
   return (
@@ -60,7 +62,7 @@ function Profile() {
               </p>
             </div>
             <Link to="/home">
-              Dashboard <i className="fa fa-arrow-right" />
+              {t("Dashboard", "داشبورد")} <i className="fa fa-arrow-right" />
             </Link>
           </header>
           {loading ? (
@@ -73,28 +75,28 @@ function Profile() {
                 <div className={styles.avatar}>{initial}</div>
                 <div>
                   <h2>{name}</h2>
-                  <p>{user?.email || "No email available"}</p>
+                  <p>{user?.email || t("No email available", "ایمیلی ثبت نشده است")}</p>
                   <span className={styles.member}>
                     {" "}
-                    <i className="fa fa-shield" /> Personal account
+                    <i className="fa fa-shield" /> {t("Personal account", "حساب شخصی")}
                   </span>
                 </div>
               </section>
               <section className={styles.stats}>
                 <article>
                   <span>{t("Tasks created", "تسک‌های ایجادشده")}</span>
-                  <strong>{taskCount}</strong>
+                  <strong>{formatNumber(taskCount)}</strong>
                 </article>
                 <article>
                   <span>{t("Tasks completed", "تسک‌های تکمیل‌شده")}</span>
-                  <strong>{completedCount}</strong>
+                  <strong>{formatNumber(completedCount)}</strong>
                 </article>
                 <article>
                   <span>{t("Completion", "میزان تکمیل")}</span>
                   <strong>
                     {taskCount
-                      ? Math.round((completedCount / taskCount) * 100)
-                      : 0}
+                      ? formatNumber(Math.round((completedCount / taskCount) * 100))
+                      : formatNumber(0)}
                     %
                   </strong>
                 </article>
@@ -113,12 +115,12 @@ function Profile() {
                   <span>{t("Account created", "تاریخ ایجاد حساب")}</span>
                   <strong>
                     {user?.created_at
-                      ? new Date(user.created_at).toLocaleDateString()
+                      ? new Date(user.created_at).toLocaleDateString(language === "fa" ? "fa-IR-u-ca-persian" : "en-US")
                       : "—"}
                   </strong>
                 </div>
                 <button onClick={signOut}>
-                  <i className="fa fa-sign-out" /> Sign out
+                  <i className="fa fa-sign-out" /> {t("Sign out", "خروج از حساب")}
                 </button>
               </section>
             </>

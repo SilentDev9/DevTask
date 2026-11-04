@@ -45,7 +45,10 @@ function Tasks() {
       .from("tasks")
       .select("*")
       .order("created_at", { ascending: false });
-    if (error) notify(error.message || "Could not load tasks.", "danger");
+    if (error) {
+      console.error("Could not load tasks:", error);
+      notify(t("Could not load tasks. Please try again.", "بارگذاری وظایف انجام نشد. دوباره تلاش کنید."), "danger");
+    }
     else setTasks(data || []);
     setLoading(false);
   }
@@ -80,18 +83,20 @@ function Tasks() {
       .from("tasks")
       .update({ status })
       .eq("id", task.id);
-    if (error)
-      return notify(error.message || "Status update failed.", "danger");
+    if (error) {
+      console.error("Task status update failed:", error);
+      return notify(t("Could not update the task status.", "تغییر وضعیت وظیفه انجام نشد."), "danger");
+    }
     setTasks((current) =>
       current.map((item) => (item.id === task.id ? { ...item, status } : item)),
     );
-    notify("Task status updated.", "success");
+    notify(t("Task status updated.", "وضعیت وظیفه به‌روزرسانی شد."), "success");
   }
 
   async function saveEdit(event) {
     event.preventDefault();
     if (!editing?.title?.trim())
-      return notify("Task title is required.", "warning");
+      return notify(t("Task title is required.", "وارد کردن عنوان وظیفه ضروری است."), "warning");
     setSaving(true);
     const payload = {
       title: editing.title.trim(),
@@ -107,12 +112,15 @@ function Tasks() {
       .select()
       .single();
     setSaving(false);
-    if (error) return notify(error.message || "Task update failed.", "danger");
+    if (error) {
+      console.error("Task update failed:", error);
+      return notify(t("Task update failed. Please try again.", "ویرایش وظیفه انجام نشد. دوباره تلاش کنید."), "danger");
+    }
     setTasks((current) =>
       current.map((item) => (item.id === editing.id ? data : item)),
     );
     setEditing(null);
-    notify("Task updated successfully.", "success");
+    notify(t("Task updated successfully.", "وظیفه با موفقیت ویرایش شد."), "success");
   }
 
   async function confirmDelete() {
@@ -123,11 +131,13 @@ function Tasks() {
       .delete()
       .eq("id", deleting.id);
     setSaving(false);
-    if (error)
-      return notify(error.message || "Task deletion failed.", "danger");
+    if (error) {
+      console.error("Task deletion failed:", error);
+      return notify(t("Task deletion failed. Please try again.", "حذف وظیفه انجام نشد. دوباره تلاش کنید."), "danger");
+    }
     setTasks((current) => current.filter((item) => item.id !== deleting.id));
     setDeleting(null);
-    notify("Task deleted.", "success");
+    notify(t("Task deleted.", "وظیفه حذف شد."), "success");
   }
 
   return (
@@ -162,7 +172,7 @@ function Tasks() {
               className={styles.addButton}
               onClick={() => navigate("/addTasks")}
             >
-              <i className="fa fa-plus" /> Add task
+              <i className="fa fa-plus" /> {t("Add task", "افزودن وظیفه")}
             </button>
           </header>
           <div className={styles.toolbar}>
@@ -178,7 +188,7 @@ function Tasks() {
               className={styles.filterAction}
               onClick={() => navigate("/tasks/filterTasks")}
             >
-              <i className="fa fa-sliders" /> Filters
+              <i className="fa fa-sliders" /> {t("Filters", "فیلترها")}
             </button>
           </div>
           <nav className={styles.taskFilters}>
@@ -188,7 +198,7 @@ function Tasks() {
                 className={activeFilter === filter ? styles.filterActive : ""}
                 onClick={() => setActiveFilter(filter)}
               >
-                {filter[0].toUpperCase() + filter.slice(1)}
+                {filter === "all" ? t("All", "همه") : filter === "pending" ? t("Pending", "در انتظار") : t("Completed", "تکمیل‌شده")}
               </button>
             ))}
           </nav>
@@ -203,7 +213,7 @@ function Tasks() {
                 >
                   <div className={styles.taskMain}>
                     <input
-                      aria-label={`Mark ${task.title} completed`}
+                      aria-label={t(`Mark ${task.title} completed`, `علامت‌گذاری ${task.title} به‌عنوان تکمیل‌شده`)}
                       type="checkbox"
                       checked={task.status === "completed"}
                       onChange={(e) => updateStatus(task, e.target.checked)}
@@ -215,27 +225,27 @@ function Tasks() {
                         <span
                           className={`${styles.pill} ${styles[(task.priority || "medium").toLowerCase()]}`}
                         >
-                          {task.priority || "Medium"} priority
+                          {t(task.priority || "Medium", task.priority === "high" ? "زیاد" : task.priority === "low" ? "کم" : "متوسط")} {t("priority", "اولویت")}
                         </span>
                         <span className={styles.pill}>
-                          {task.category || "General"}
+                          {({ Personal: t("Personal", "شخصی"), Work: t("Work", "کاری"), Study: t("Study", "تحصیلی"), Other: t("Other", "سایر") })[task.category] || task.category || t("General", "عمومی")}
                         </span>
                         <span>
                           <i className="fa fa-calendar" />{" "}
-                          {task.due_date || "No due date"}
+                          {task.due_date ? new Date(`${task.due_date}T00:00:00`).toLocaleDateString(language === "fa" ? "fa-IR-u-ca-persian" : "en-US") : t("No due date", "بدون تاریخ سررسید")}
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className={styles.actions}>
                     <button
-                      aria-label="Edit task"
+                      aria-label={t("Edit task", "ویرایش وظیفه")}
                       onClick={() => setEditing({ ...emptyTask, ...task })}
                     >
                       <i className="fa fa-pencil" />
                     </button>
                     <button
-                      aria-label="Delete task"
+                      aria-label={t("Delete task", "حذف وظیفه")}
                       onClick={() => setDeleting(task)}
                     >
                       <i className="fa fa-trash" />
@@ -267,7 +277,7 @@ function Tasks() {
                 type="button"
                 className={styles.close}
                 onClick={() => setEditing(null)}
-                aria-label="Close"
+                aria-label={t("Close", "بستن")}
               >
                 ×
               </button>

@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/DevTask">
+  <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
     <App />
   </BrowserRouter>,
 );

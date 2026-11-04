@@ -42,10 +42,44 @@ body,
   min-height: 100%;
 }
 
+@font-face {
+  font-family: "DevTask Arabic";
+  src: url("./assets/fonts/DevTaskArabic-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DevTask Arabic";
+  src: url("./assets/fonts/DevTaskArabic-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DevTask Arabic";
+  src: url("./assets/fonts/DevTaskArabic-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DevTask Arabic";
+  src: url("./assets/fonts/DevTaskArabic-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: Arial, sans-serif;
+  font-family: "DevTask Arabic", "Segoe UI", Tahoma, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -55,5 +89,19 @@ select {
   font: inherit;
 }
 
-.app-persian { font-family: Tahoma, Arial, sans-serif; }
+.app-persian { font-family: "DevTask Arabic", "Segoe UI", Tahoma, sans-serif; }
 .app-persian input, .app-persian textarea, .app-persian select { text-align: right; }
+
+
+html { color-scheme: dark; -webkit-tap-highlight-color: transparent; }
+body { overscroll-behavior-y: contain; }
+button,a,[role="button"] { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible { outline:2px solid #a78bfa;outline-offset:3px; }
+button:active { -webkit-tap-highlight-color: transparent; }
+.app-persian { direction:rtl; }
+.app-english { direction:ltr; }
+.app-persian input,.app-persian textarea,.app-persian select { text-align:right; }
+@media(max-width:768px){
+  body { padding-bottom:env(safe-area-inset-bottom); }
+  main { padding-bottom:calc(82px + env(safe-area-inset-bottom)); }
+}

@@ -1,258 +1,65 @@
-/* Login page: styles are scoped to this CSS Module */
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: clamp(16px, 4vw, 40px);
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      rgba(109, 40, 217, 0.13),
-      transparent 55%
-    ),
-    var(--bg-primary, #0b1020);
+  padding: clamp(18px, 4vw, 44px);
+  background: radial-gradient(ellipse at 50% 0%, rgba(109, 40, 217, .18), transparent 58%), var(--bg-primary, #0b1020);
   color: var(--text-primary, #f8fafc);
 }
-
-.page *,
-.page *::before,
-.page *::after {
-  box-sizing: border-box;
-}
-
+.page *, .page *::before, .page *::after { box-sizing: border-box; }
 .loginCard {
   width: 100%;
-  max-width: 440px;
-  padding: clamp(22px, 5vw, 38px);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  border-radius: 22px;
-  background: rgba(5, 13, 31, 0.72);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+  max-width: 470px;
+  padding: clamp(26px, 5vw, 44px);
+  border: 1px solid rgba(139, 92, 246, .27);
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(21, 29, 53, .96), rgba(10, 17, 35, .96));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .34), inset 0 1px rgba(255,255,255,.04);
+  backdrop-filter: blur(18px);
 }
-
-.headerForm {
-  padding: 0;
-  margin-bottom: 28px;  flex-direction: column;
-}
-
+.headerForm { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 30px; }
 .logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  color: var(--primary-light, #8b5cf6);
-  font-size: 2.6rem;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.08em;
+  width: 62px; height: 62px; display: grid; place-items: center; margin-bottom: 21px;
+  border-radius: 19px; color: #fff; font-size: 26px;
+  background: linear-gradient(145deg, #8b5cf6, #4f46e5);
+  box-shadow: 0 13px 34px rgba(109, 40, 217, .36);
 }
-
-.headerForm h1 {
-  margin: 0 0 8px;
-  font-size: clamp(1.65rem, 5vw, 2rem);
-  line-height: 1.2;
-  font-weight: 700;
-
-}
-
-.headerForm p {
-  margin: 0;
-  color: var(--text-secondary, #94a3b8);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 14px;
-  width: 100%;
-}
-
-.inputWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.inputWrap > i {
-  position: absolute;
-  left: 15px;
-  z-index: 1;
-  color: var(--text-secondary, #94a3b8);
-  font-size: 1rem;
-  pointer-events: none;
-}
-
+.eyebrow { margin-bottom: 10px; color: #a78bfa; font-size: 10px; font-weight: 800; letter-spacing: 2.5px; }
+.headerForm h1 { margin: 0 0 9px; font-size: clamp(30px, 5vw, 36px); line-height: 1.25; font-weight: 800; letter-spacing: -.7px; }
+.headerForm p { max-width: 370px; margin: 0; color: var(--text-secondary, #94a3b8); font-size: 14px; line-height: 1.8; }
+.form { display: flex; flex-direction: column; align-items: stretch; gap: 10px; width: 100%; }
+.fieldLabel { margin-top: 7px; color: #dbe4f0; font-size: 13px; font-weight: 650; }
+.inputWrap { position: relative; display: flex; align-items: center; width: 100%; }
+.inputWrap > i { position: absolute; inset-inline-start: 16px; z-index: 1; color: #9ba8c4; font-size: 16px; pointer-events: none; }
 .inputWrap input {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  min-height: 52px;
-  padding: 14px 44px;
-  border: 1px solid rgba(139, 92, 246, 0.16);
-  border-radius: 10px;
-  outline: none;
-  background: #111d3a;
-  color: var(--text-primary, #f8fafc);
-  font: inherit;
-  font-size: 0.92rem;
-  text-align: left;
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+  width: 100%; min-width: 0; min-height: 55px; padding: 14px 48px;
+  border: 1px solid rgba(139, 92, 246, .2); border-radius: 13px; outline: none;
+  background: #0e1931; color: #f8fafc; font: inherit; font-size: 14px; text-align: start;
+  transition: border-color .18s ease, box-shadow .18s ease;
 }
-
-.inputWrap input::placeholder {
-  color: #8393b8;
-  opacity: 1;
+.inputWrap input::placeholder { color: #8290ad; opacity: 1; }
+.inputWrap input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 4px rgba(139, 92, 246, .14); }
+.passwordToggle {
+  position: absolute; inset-inline-end: 9px; width: 38px; height: 38px; display: grid; place-items: center;
+  border: 0; border-radius: 10px; color: #aeb8cf; background: transparent; cursor: pointer;
 }
-
-.inputWrap input:focus {
-  border-color: var(--primary-light, #8b5cf6);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
-}
-
-.passwordHint {
-  position: absolute;
-  right: 14px;
-  color: var(--text-secondary, #94a3b8);
-  font-size: 1rem;
-}
-
+.passwordToggle:hover { color: #fff; background: rgba(139, 92, 246, .16); }
 .submitButton {
-  width: 100%;
-  min-height: 50px;
-  margin-top: 4px;
-  padding: 13px 18px;
-  border: 0;
-  border-radius: 10px;
-  background: var(
-    --gradient-primary,
-    linear-gradient(100deg, #6d28d9, #8b5cf6, #a855f7)
-  );
-  color: white;
-  font: inherit;
-  font-size: 0.98rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    filter 160ms ease,
-    transform 160ms ease;
+  width: 100%; min-height: 54px; margin-top: 15px; padding: 13px 18px; display: flex; align-items: center; justify-content: center; gap: 12px;
+  border: 0; border-radius: 13px; color: #fff; background: linear-gradient(100deg, #6d28d9, #8b5cf6, #a855f7);
+  box-shadow: 0 12px 28px rgba(109, 40, 217, .28); font: inherit; font-size: 15px; font-weight: 750; cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
 }
-
-.submitButton:hover {
-  filter: brightness(1.08);
-}
-
-.submitButton:active {
-  transform: translateY(1px);
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  margin: 10px 0 2px;
-  color: var(--text-muted, #64748b);
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  height: 1px;
-  flex: 1;
-  background: var(--border-color, #2d3748);
-}
-
-.socialButtons {
-  display: flex;
-  gap: 12px;
-  width: 100%;
-  margin-top: 14px;
-}
-
-.socialButtons button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-height: 48px;
-  border: 1px solid rgba(139, 92, 246, 0.12);
-  border-radius: 10px;
-  background: #111d3a;
-  color: var(--text-primary, #f8fafc);
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition:
-    border-color 160ms ease,
-    background 160ms ease;
-}
-
-.socialButtons button:hover {
-  border-color: var(--primary-light, #8b5cf6);
-  background: #172448;
-}
-
-.socialButtons button:first-child i {
-  color: #60a5fa;
-}
-
-.signupText {
-  margin: 30px 0 0;
-  color: var(--text-secondary, #94a3b8);
-  text-align: center;
-  font-size: 0.82rem;
-  line-height: 1.6;
-}
-
-.signupText a {
-  margin-left: 4px;
-  color: var(--primary-light, #8b5cf6);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.signupText a:hover {
-  text-decoration: underline;
-}
-
+.submitButton:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.submitButton:disabled { opacity: .65; cursor: wait; transform: none; }
+.signupText { margin: 28px 0 0; color: #9ba7bf; text-align: center; font-size: 13px; line-height: 1.8; }
+.signupText a { color: #b69aff; text-decoration: none; font-weight: 700; }
+.signupText a:hover { text-decoration: underline; }
 @media (max-width: 480px) {
-  .page {
-    align-items: center;
-    padding: 16px;
-  }
-
-  .loginCard {
-    max-width: 100%;
-    padding: 24px 20px;
-    border-radius: 18px;
-  }
-
-  .headerForm {
-    margin-bottom: 24px;
-  }
-
-  .logo {
-    margin-bottom: 20px;
-    font-size: 2.35rem;
-  }
-
-  .signupText {
-    margin-top: 24px;
-  }
-}
-
-@media (max-height: 620px) and (min-width: 481px) {
-  .page {
-    align-items: flex-start;
-  }
+  .page { align-items: center; padding: 18px 14px calc(24px + env(safe-area-inset-bottom)); }
+  .loginCard { padding: 27px 21px; border-radius: 22px; }
+  .headerForm { margin-bottom: 24px; }
 }

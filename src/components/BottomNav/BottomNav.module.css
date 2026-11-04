@@ -95,3 +95,12 @@
 .languageItem{flex:0 0 auto!important;align-items:center}
 .languageItem .toggle{min-height:42px;padding:7px 9px;border-radius:11px;font-size:11px;gap:5px}
 @media(min-width:769px){.languageItem{display:none!important}}
+
+.navLink { border:0;background:transparent;font:inherit;cursor:pointer;min-height:54px; }
+.container { padding-bottom:env(safe-area-inset-bottom); }
+.menuScrim { position:fixed;inset:0;z-index:1098;border:0;background:#02061788; }
+.moreMenu { position:fixed;z-index:1099;bottom:calc(76px + env(safe-area-inset-bottom));inset-inline-end:12px;width:min(280px,calc(100vw - 24px));padding:10px;border:1px solid #8b5cf655;border-radius:18px;background:#111827f5;box-shadow:0 18px 55px #0009;backdrop-filter:blur(18px); }
+.moreMenu>a,.languageRow { display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 12px;border-radius:12px;color:#e2e8f0;text-decoration:none; }
+.moreMenu>a:hover { background:#8b5cf622; }.moreMenu i { color:#a78bfa;width:20px;text-align:center; }
+.languageRow { justify-content:space-between;border-top:1px solid #334155;margin-top:5px;padding-top:12px; }
+@media(min-width:769px){.moreMenu,.menuScrim{display:none}}

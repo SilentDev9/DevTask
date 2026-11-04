@@ -63,7 +63,7 @@ export default function About() {
               </p>
             </article>
           </section>
-          <footer>DevTask · Your personal productivity workspace</footer>
+          <footer>DevTask · {t("Your personal productivity workspace", "فضای شخصی شما برای مدیریت و بهره‌وری")}</footer>
         </div>
       </main>
       <BottomNav />

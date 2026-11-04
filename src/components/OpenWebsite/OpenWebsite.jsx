@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./OpenWensite.module.css";
+import { useLanguage, translate } from "../../context/LanguageContext";
 
 function OpenWebsite({ redirectAfterDelay = true }) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const t = (en, fa) => translate(language, en, fa);
   const data = "</>";
   useEffect(() => {
     // The splash page redirects; loading uses of this component do not.
@@ -23,9 +26,9 @@ function OpenWebsite({ redirectAfterDelay = true }) {
         <h1>
           Dev<span className={styles.websiteName}>Task</span>
         </h1>
-        <span>Plan . Build . Achieve</span>
+        <span>{t("Plan · Build · Achieve", "برنامه‌ریزی · ساختن · پیشرفت")}</span>
         <span className={styles.textfoot}>
-          Your tasks . your progress . your success.
+          {t("Your tasks · your progress · your success.", "وظایف شما · پیشرفت شما · موفقیت شما")}
         </span>
         <div className={styles.loader}></div>
       </div>
