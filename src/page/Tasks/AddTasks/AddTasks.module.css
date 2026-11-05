@@ -3,8 +3,8 @@
   padding: 24px 20px 40px;
   min-height: 100vh;
   box-sizing: border-box;
-  background: #050d1c;
-  color: #f4f6ff;
+  background:transparent;
+  color: var(--text-primary);
 
 }
 
@@ -74,7 +74,7 @@
   border: 1px solid #202f55;
   border-radius: 14px;
   background: #111d3d;
-  color: #f4f6ff;
+  color: var(--text-primary);
   font: inherit;
   transition:
     border-color 0.2s ease,
@@ -129,14 +129,14 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #f4f6ff;
+  color: var(--text-primary);
   font: inherit;
   cursor: pointer;
 }
 
 .selectWrapper select option {
   background: #111d3d;
-  color: #f4f6ff;
+  color: var(--text-primary);
 }
 
 .priorityDot,
@@ -174,7 +174,7 @@
   border: 1px solid #874bff;
   border-radius: 14px;
   background: linear-gradient(110deg, #7135f5, #8c32f5);
-  color: white;
+  color:var(--on-primary);
   font-size: 17px;
   font-weight: 600;
   cursor: pointer;
@@ -201,11 +201,11 @@
 .containerHide { opacity:.28; filter:blur(2px); pointer-events:none; }
 .dialogBackdrop { position:fixed; inset:0; z-index:2000; display:grid; place-items:center; padding:20px; box-sizing:border-box; background:rgba(3,7,18,.76); backdrop-filter:blur(9px); animation:backdropIn .18s ease both; }
 .accpetOrNotAccpet { width:min(100%,440px); box-sizing:border-box; padding:30px; display:flex; align-items:center; flex-direction:column; gap:12px; text-align:center; border:1px solid #45416e; border-radius:24px; background:linear-gradient(145deg,#1b2340,#11182d); box-shadow:0 24px 80px rgba(0,0,0,.48); animation:dialogIn .22s ease both; }
-.dialogIcon { width:54px; height:54px; display:grid; place-items:center; border-radius:17px; color:#c4b5fd; background:rgba(139,92,246,.16); font-size:23px; }
+.dialogIcon { width:54px; height:54px; display:grid; place-items:center; border-radius:17px; color:var(--secondary); background:rgba(139,92,246,.16); font-size:23px; }
 .accpetOrNotAccpet h2 { margin:4px 0 0; color:#f5f4ff; font-size:21px; }
 .accpetOrNotAccpet p { margin:0; color:#aeb8d0; line-height:1.8; font-size:14px; }
 .buttonAccpet { width:100%; display:flex; flex-wrap:wrap; gap:10px; padding-top:12px; }
-.buttonAccpet button { flex:1 1 140px; min-height:46px; padding:10px 14px; border:1px solid transparent; border-radius:12px; color:white; font:inherit; font-weight:700; cursor:pointer; transition:filter .2s ease,transform .2s ease; }
+.buttonAccpet button { flex:1 1 140px; min-height:46px; padding:10px 14px; border:1px solid transparent; border-radius:12px; color:var(--on-primary); font:inherit; font-weight:700; cursor:pointer; transition:filter .2s ease,transform .2s ease; }
 .buttonAccpet button:hover:not(:disabled) { filter:brightness(1.12); }
 .buttonAccpet button:active:not(:disabled) { transform:scale(.98); }
 .buttonAccpet button:disabled { opacity:.6; cursor:not-allowed; }

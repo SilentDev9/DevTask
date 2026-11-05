@@ -76,7 +76,7 @@
   transition: background 160ms ease, color 160ms ease;
 }
 
-.closeButton:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+.closeButton:hover { background: rgba(255, 255, 255, 0.14); color: var(--text-primary); }
 
 @keyframes slideDown {
   from { opacity: 0; transform: translate(-50%, -18px); }

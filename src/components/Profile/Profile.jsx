@@ -4,9 +4,11 @@ import { supabase } from "../../lib/supabase";
 import BottomNav from "../BottomNav/BottomNav";
 import styles from "./Profile.module.css";
 import { useLanguage, translate } from "../../context/LanguageContext";
+import { useTheme, themes, backgrounds } from "../../context/ThemeContext";
 
 function Profile() {
   const { language } = useLanguage();
+  const { theme, setTheme, background, setBackground } = useTheme();
   const t = (en, fa) => translate(language, en, fa);
   const formatNumber = (value) => new Intl.NumberFormat(language === "fa" ? "fa-IR" : "en-US").format(value);
   const navigate = useNavigate();
@@ -100,6 +102,31 @@ function Profile() {
                     %
                   </strong>
                 </article>
+              </section>
+              <section className={styles.customization}>
+                <div className={styles.customizationHeading}>
+                  <span className={styles.customizationIcon}><i className="fa fa-palette" /></span>
+                  <div>
+                    <h2>{t("Appearance", "شخصی‌سازی ظاهر")}</h2>
+                    <p>{t("Choose a color theme and an animated background.", "رنگ‌بندی و پس‌زمینه دلخواه خود را انتخاب کنید.")}</p>
+                  </div>
+                </div>
+                <h3>{t("Color themes", "قالب‌های رنگی")}</h3>
+                <div className={styles.themeGrid}>
+                  {themes.map((item) => <button key={item.id} type="button" onClick={() => setTheme(item.id)} className={`${styles.themeChoice} ${theme === item.id ? styles.selectedTheme : ""}`} aria-pressed={theme === item.id}>
+                    <span className={styles.themeSwatch} style={{ "--swatch": item.color }} />
+                    <span>{language === "fa" ? item.label : item.name}</span>
+                    {theme === item.id && <i className="fa fa-check" />}
+                  </button>)}
+                </div>
+                <h3>{t("Animated backgrounds", "پس‌زمینه‌های متحرک")}</h3>
+                <div className={styles.backgroundGrid}>
+                  {backgrounds.map((item) => <button key={item.id} type="button" onClick={() => setBackground(item.id)} className={`${styles.backgroundChoice} ${background === item.id ? styles.selectedBackground : ""}`} aria-pressed={background === item.id}>
+                    <span className={`${styles.backgroundPreview} ${styles["preview_" + item.id]}`}><i className="fa fa-sparkles" /></span>
+                    <span>{language === "fa" ? item.label : item.name}</span>
+                    {background === item.id && <i className="fa fa-check" />}
+                  </button>)}
+                </div>
               </section>
               <section className={styles.account}>
                 <h2>{t("Account information", "اطلاعات حساب")}</h2>

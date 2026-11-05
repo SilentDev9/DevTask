@@ -12,6 +12,9 @@ import Stats from "./components/Stats/Stats";
 import About from "./components/About/About";
 import Support from "./components/Support/Support";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import ForgotPassword from "./components/Account/login/ForgotPassword";
+import ResetPassword from "./components/Account/login/ResetPassword";
 
 function AppContent() {
   const { isPersian } = useLanguage();
@@ -20,6 +23,8 @@ function AppContent() {
       <Route path="/" element={<OpenWebsite />} />
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/register" element={<Register />} />
       <Route path="/tasks" element={<Tasks />} />
       <Route path="/tasks/filterTasks" element={<FilterTasks />} />
@@ -33,5 +38,5 @@ function AppContent() {
 }
 
 export default function App() {
-  return <LanguageProvider><AppContent /></LanguageProvider>;
+  return <LanguageProvider><ThemeProvider><AppContent /></ThemeProvider></LanguageProvider>;
 }

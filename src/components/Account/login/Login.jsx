@@ -129,6 +129,9 @@ function Login() {
           </button>
         </form>
 
+        <p className={styles.signupText} style={{ marginTop: 17, marginBottom: -14 }}>
+          <Link to="/forgot-password">{t("Forgot password?", "رمز عبور را فراموش کرده‌اید؟")}</Link>
+        </p>
         <p className={styles.signupText}>
           {t("Don't have an account?", "هنوز حساب کاربری ندارید؟")} <Link to="/register">{t("Create an account", "ایجاد حساب کاربری")}</Link>
         </p>
